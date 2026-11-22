@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101316">
+  <title>Панель управления — WlmAfton Games</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body{min-height:100vh}.admin-wrap{max-width:980px;margin:0 auto;padding:125px 24px 80px}
+    .admin-top{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:35px}
+    .admin-top h1{font-size:clamp(36px,6vw,62px);margin:12px 0}
+    .admin-card{background:#171c20;border:1px solid #30383a;padding:25px;margin:18px 0}
+    .admin-card h2{font:700 20px 'Space Grotesk';margin:0 0 20px}
+    .admin-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+    label{font-size:10px;color:#aab2af;letter-spacing:.1em;font-weight:800}
+    input,textarea,select{width:100%;background:#101316;color:#edf0ec;border:1px solid #394342;padding:13px;font:13px Manrope,Arial;border-radius:0}
+    textarea{min-height:100px;resize:vertical}
+    .admin-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}
+    .admin-btn{background:#d4ff55;color:#141914;border:0;padding:13px 18px;font-weight:800;font-size:11px;cursor:pointer}
+    .admin-btn.secondary{background:transparent;color:#d4ff55;border:1px solid #65715a}
+    .admin-btn.danger{background:#ff754d;color:#171310}
+    .admin-list{display:grid;gap:10px}.admin-item{border:1px solid #30383a;padding:15px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+    .admin-item small{display:block;color:#929b9b;margin-top:5px}.status{color:#d4ff55;font-size:10px}
+    .notice{padding:13px;border:1px solid #52613d;color:#d4ff55;font-size:12px;line-height:1.6;margin:15px 0}
+    .error{border-color:#8b4535;color:#ff9a7e}.hidden{display:none!important}
+    @media(max-width:650px){.admin-form{grid-template-columns:1fr}.field.full{grid-column:auto}.admin-top{align-items:flex-start;flex-direction:column}.admin-item{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html"><span class="brand-mark">W<span>A</span></span><span class="brand-name">WlmAfton <b>Games</b></span></a>
+  <nav class="nav" style="display:flex"><a href="index.html">← На сайт</a></nav>
+</header>
+<main class="admin-wrap">
+  <div class="eyebrow">PRIVATE STUDIO AREA / ADMIN</div>
+  <div class="admin-top"><div><h1>ПАНЕЛЬ <em>УПРАВЛЕНИЯ</em></h1><p style="color:#929b9b;font-size:13px">Управляй играми WlmAfton Games.</p></div><button id="logoutBtn" class="admin-btn secondary hidden">Выйти</button></div>
+  <div id="setupWarning" class="notice">Сначала настрой Supabase: заполни <b>supabase-config.js</b>, выполни SQL из папки <b>supabase</b> и создай пользователя администратора. Инструкция — в README_RU.txt.</div>
+  <section id="loginPanel" class="admin-card">
+    <h2>ВХОД АДМИНИСТРАТОРА</h2>
+    <form id="loginForm" class="admin-form">
+      <div class="field full"><label for="email">EMAIL</label><input id="email" type="email" required autocomplete="username" placeholder="Твой email"></div>
+      <div class="field full"><label for="password">ПАРОЛЬ</label><input id="password" type="password" required autocomplete="current-password" placeholder="Пароль администратора"></div>
+      <div class="field full"><button class="admin-btn" type="submit">ВОЙТИ В ПАНЕЛЬ →</button></div>
+    </form>
+    <div id="loginMessage" class="notice hidden"></div>
+  </section>
+  <section id="dashboard" class="hidden">
+    <div class="admin-card">
+      <h2 id="formTitle">ДОБАВИТЬ ИГРУ</h2>
+      <form id="gameForm" class="admin-form">
+        <input id="gameId" type="hidden">
+        <div class="field"><label for="title">НАЗВАНИЕ ИГРЫ</label><input id="title" maxlength="100" required placeholder="Например, Night Shift"></div>
+        <div class="field"><label for="genre">ЖАНР / ПЛАТФОРМА</label><input id="genre" maxlength="80" placeholder="HORROR / WINDOWS"></div>
+        <div class="field"><label for="status">СТАТУС</label><select id="status"><option>В РАЗРАБОТКЕ</option><option>ДОСТУПНА</option><option>СКОРО</option></select></div>
+        <div class="field"><label for="code">КОД ПРОЕКТА</label><input id="code" maxlength="20" placeholder="WA_01"></div>
+        <div class="field full"><label for="description">ОПИСАНИЕ</label><textarea id="description" maxlength="1000" placeholder="Расскажи об игре..."></textarea></div>
+        <div class="field full"><label for="gameFile">ФАЙЛ ИГРЫ (ZIP / EXE)</label><input id="gameFile" type="file" accept=".zip,.exe,.7z,.rar"></div>
+        <div class="field full"><label for="downloadUrl">ИЛИ ПРЯМАЯ ССЫЛКА НА ЗАГРУЗКУ</label><input id="downloadUrl" type="url" placeholder="https://..."></div>
+        <div class="field full"><label><input id="published" type="checkbox" checked style="width:auto;margin-right:8px">Опубликовать игру на сайте</label></div>
+        <div class="field full admin-actions"><button class="admin-btn" type="submit">СОХРАНИТЬ ИГРУ</button><button id="cancelEdit" class="admin-btn secondary hidden" type="button">ОТМЕНА</button></div>
+      </form>
+      <div id="formMessage" class="notice hidden"></div>
+    </div>
+    <div class="admin-card"><h2>ИГРЫ В КАТАЛОГЕ</h2><div id="gamesList" class="admin-list">Загрузка...</div></div>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="admin.js"></script>
+</body></html>

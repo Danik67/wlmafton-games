@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101316">
+  <meta name="description" content="WlmAfton Games — независимая игровая студия. Наши игры, новости разработки и загрузки.">
+  <title>WlmAfton Games — независимая игровая студия</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="WlmAfton Games — главная">
+      <span class="brand-mark">W<span>A</span></span>
+      <span class="brand-name">WlmAfton <b>Games</b></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">☰</button>
+    <nav class="nav" id="nav">
+      <a href="#games">Игры</a>
+      <a href="#about">О студии</a>
+      <a href="#updates">Обновления</a>
+      <a class="nav-cta" href="mailto:contact@wlmaftongames.com">Связаться ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-grid"></div>
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> INDEPENDENT GAME STUDIO</div>
+        <h1>ИГРЫ, КОТОРЫЕ<br><em>ОСТАЮТСЯ</em><br>С ТОБОЙ.</h1>
+        <p class="hero-text">Добро пожаловать в WlmAfton Games — место, где идеи превращаются в игровые миры. Исследуй наши проекты и следи за разработкой.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#games">Смотреть игры <span>↘</span></a>
+          <a class="text-link" href="#about">Узнать о студии <span>→</span></a>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Абстрактная графика студии">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="art-core"><span>WA</span><small>EST. 2026</small></div>
+        <div class="art-label label-top">CREATIVE<br>DIVISION <b>01</b></div>
+        <div class="art-label label-bottom"><span class="tiny-dot"></span> BUILT WITH PASSION</div>
+        <div class="crosshair">+</div>
+      </div>
+      <div class="hero-bottom"><span>SCROLL TO EXPLORE</span><span>01 / 04</span></div>
+    </section>
+
+    <section class="section games-section" id="games">
+      <div class="section-heading">
+        <div><div class="eyebrow">OUR PROJECTS / 001</div><h2>НАШИ <em>ИГРЫ</em></h2></div>
+        <p>Каждый проект — отдельная история.<br>Выбери, во что сыграть.</p>
+      </div>
+      <div class="games-grid" id="gamesGrid" aria-live="polite"></div>
+      <p class="empty-note" id="emptyNote" hidden>Скоро здесь появятся наши первые игры. Следи за обновлениями!</p>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="about-number">02</div>
+      <div class="about-content">
+        <div class="eyebrow">WHO WE ARE</div>
+        <h2>НЕ ПРОСТО<br><em>ИГРЫ.</em> ЭМОЦИИ.</h2>
+        <p>WlmAfton Games — независимая игровая студия, создающая собственные игровые проекты. Мы экспериментируем с атмосферой, механиками и историями, чтобы каждый проект оставлял впечатление.</p>
+        <div class="about-stats">
+          <div><strong>01<span>+</span></strong><small>ИДЕИ В РАБОТЕ</small></div>
+          <div><strong>∞</strong><small>ВОЗМОЖНОСТИ</small></div>
+          <div><strong>100<span>%</span></strong><small>УВЛЕЧЁННОСТЬ</small></div>
+        </div>
+      </div>
+      <div class="about-side"><span>WLM / AFTON</span><div class="side-line"></div><span>GAMES STUDIO</span></div>
+    </section>
+
+    <section class="updates-section section" id="updates">
+      <div class="section-heading">
+        <div><div class="eyebrow">DEV LOG / 003</div><h2>ПОСЛЕДНИЕ <em>НОВОСТИ</em></h2></div>
+        <p>Следи за ходом разработки<br>и новыми релизами.</p>
+      </div>
+      <article class="update-card">
+        <div class="update-date">22.11.2026 <span>— STUDIO LOG</span></div>
+        <div><h3>WlmAfton Games выходит в сеть</h3><p>Это официальный сайт студии. Скоро здесь появятся страницы проектов, новости разработки и ссылки на загрузку игр.</p></div>
+        <span class="update-arrow">↗</span>
+      </article>
+    </section>
+
+    <section class="contact-band">
+      <div class="eyebrow">HAVE A QUESTION?</div>
+      <h2>ДАВАЙ СОЗДАВАТЬ<br><em>НЕЧТО ОСОБЕННОЕ.</em></h2>
+      <a class="button button-light" href="mailto:contact@wlmaftongames.com">Написать студии ↗</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand" href="#home"><span class="brand-mark">W<span>A</span></span><span class="brand-name">WlmAfton <b>Games</b></span></a>
+    <span>© <span id="year"></span> WlmAfton Games. Все права защищены.</span>
+    <a href="#home" class="back-top">НАВЕРХ ↑</a>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="games.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
