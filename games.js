@@ -1,24 +1,14 @@
 /*
   СПИСОК ИГР СТУДИИ
-  Чтобы добавить игру, скопируй один объект и заполни поля.
-  download: путь к архиву/установщику в папке downloads (например: "downloads/my-game.zip").
-  Если download пустой, кнопка загрузки будет показывать «СКОРО».
+  download: прямая ссылка на архив или установщик игры.
 */
 const games = [
   {
-    title: "ТВОЯ ПЕРВАЯ ИГРА",
-    genre: "ЖАНР / PC",
-    status: "В РАЗРАБОТКЕ",
-    description: "Здесь будет описание твоего проекта. Замени этот текст на краткий рассказ об игре.",
+    title: "MAZE ESCAPE",
+    genre: "HORROR / WINDOWS",
+    status: "ГОТОВА • V1.0",
+    description: "Выберись из тёмного лабиринта, собери 10 монет и избегай красного монстра. Используй фонарик и постарайся выжить.",
     code: "WA_01",
-    download: ""
-  },
-  {
-    title: "НОВЫЙ ПРОЕКТ",
-    genre: "ЖАНР / PC",
-    status: "СКОРО",
-    description: "Добавь сюда следующий проект студии, его жанр и небольшое описание.",
-    code: "WA_02",
-    download: ""
+    download: "https://github.com/Danik67/wlmafton-games/releases/download/v1.0/Maze.Escape.zip"
   }
 ];
